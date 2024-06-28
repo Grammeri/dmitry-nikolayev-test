@@ -19,6 +19,10 @@
 # misc
 .DS_Store
 *.pem
+*.log
+*.pid
+*.seed
+*.pid.lock
 
 # debug
 npm-debug.log*
@@ -26,6 +30,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+.env
+.env.test
 .env*.local
 
 # vercel
@@ -34,3 +40,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS generated files
+Thumbs.db
