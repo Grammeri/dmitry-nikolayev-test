@@ -15,6 +15,7 @@ const UserTable = () => {
   const [users, setUsers] = useState<UserItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
+  const [hasMoreUsers, setHasMoreUsers] = useState(true);
   const limit = 5;
 
   useEffect(() => {
@@ -24,13 +25,27 @@ const UserTable = () => {
   const fetchUsers = async (page: number) => {
     setLoading(true);
     const offset = page * limit;
-    const response = await fetch(
-      `https://test.dev-relabs.ru/api/users/list?limit=${limit}&offset=${offset}`
-    );
-    const data = await response.json();
-    console.log(data.items); // Добавляем вывод данных в консоль для проверки
-    setUsers(data.items);
-    setLoading(false);
+    try {
+      const response = await fetch(
+        `https://test.dev-relabs.ru/api/users/list?limit=${limit}&offset=${offset}`
+      );
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log(data.items);
+      if (data.items.length < limit) {
+        setHasMoreUsers(false);
+      } else {
+        setHasMoreUsers(true);
+      }
+      setUsers(data.items);
+    } catch (error) {
+      console.error('Fetching users failed:', error);
+      setHasMoreUsers(false);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDelete = (id: number) => {
@@ -81,7 +96,11 @@ const UserTable = () => {
         >
           Previous
         </button>
-        <button className={styles.button} onClick={() => setPage(page + 1)}>
+        <button
+          className={styles.button}
+          onClick={() => setPage(page + 1)}
+          disabled={!hasMoreUsers}
+        >
           Next
         </button>
       </div>
