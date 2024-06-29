@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { loginValidationSchema } from '@/app/shared/utils/validationSchema';
+import { useRouter } from 'next/navigation';
 
 import styles from './LoginForm.module.scss';
 import Button from '@/app/components/Button/Button';
+import { CircularProgress } from '@mui/material';
 
 interface LoginFormValues {
   email: string;
@@ -14,6 +16,7 @@ interface LoginFormValues {
 
 export default function LoginForm() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const initialValues: LoginFormValues = { email: '', password: '' };
 
@@ -24,8 +27,7 @@ export default function LoginForm() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      // Redirect to home page
-      window.location.href = '/main';
+      router.push('/main');
     }, 2000);
   };
 
@@ -65,8 +67,12 @@ export default function LoginForm() {
               className={styles['error-message']}
             />
 
-            <Button onClick={() => {}} disabled={isSubmitting || loading}>
-              {loading ? 'Loading...' : 'Login'}
+            <Button type="submit" disabled={isSubmitting || loading}>
+              {loading ? (
+                <CircularProgress size={24} color="inherit" />
+              ) : (
+                'Login'
+              )}
             </Button>
           </Form>
         )}

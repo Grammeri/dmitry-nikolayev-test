@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { formatDate } from '@/app/shared/utils/formatDate';
 import Button from '@/app/components/Button/Button';
 import styles from './UserTable.module.scss';
+import { CircularProgress } from '@mui/material';
 
 type UserItem = {
   id: number;
@@ -65,7 +66,7 @@ const UserTable = () => {
     <div>
       <h2 className="table-heading">Users</h2>
       {loading ? (
-        <p>Loading...</p>
+        <CircularProgress />
       ) : (
         <table className={styles.table}>
           <thead>
