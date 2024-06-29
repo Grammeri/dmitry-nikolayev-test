@@ -26,7 +26,7 @@ const EventsTable = () => {
 
   return (
     <div>
-      <h2>Events</h2>
+      <h2 className="table-heading">Events</h2>
       <table className={styles.table}>
         <thead>
           <tr>

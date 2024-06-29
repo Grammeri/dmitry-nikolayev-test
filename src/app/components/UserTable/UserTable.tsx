@@ -63,7 +63,7 @@ const UserTable = () => {
 
   return (
     <div>
-      <h2>Users</h2>
+      <h2 className="table-heading">Users</h2>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -92,7 +92,7 @@ const UserTable = () => {
           </tbody>
         </table>
       )}
-      <div>
+      <div className="pagination-buttons">
         <Button onClick={handlePrevious} disabled={page === 0}>
           Previous
         </Button>

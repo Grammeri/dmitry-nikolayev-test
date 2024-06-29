@@ -1,5 +1,6 @@
 @import '@/app/styles/helpers/mixins.scss';
 @import '@/app/styles/helpers/vars.scss';
+@import '@/app/styles/helpers/colors.scss';
 
 .button {
   @include button-regular;

@@ -1,4 +1,5 @@
 @import '@/app/styles/helpers/colors.scss';
+@import '@/app/styles/helpers/vars.scss';
 
 .table {
   width: 100%;
@@ -15,3 +16,6 @@
   background-color: $table-bg-color;
 }
 
+.table-heading{
+  font-size: $font-size-regular
+}
