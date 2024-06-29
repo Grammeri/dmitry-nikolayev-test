@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { formatDate } from '@/app/shared/utils/formatDate';
+import Button from '@/app/components/Button/Button';
 import styles from './UserTable.module.scss';
 
 type UserItem = {
@@ -52,6 +53,14 @@ const UserTable = () => {
     setUsers(users.filter((user) => user.id !== id));
   };
 
+  const handlePrevious = () => {
+    setPage(page - 1);
+  };
+
+  const handleNext = () => {
+    setPage(page + 1);
+  };
+
   return (
     <div>
       <h2>Users</h2>
@@ -76,12 +85,7 @@ const UserTable = () => {
                 <td className={styles.td}>{user.role}</td>
                 <td className={styles.td}>{formatDate(user.ctime)}</td>
                 <td className={styles.td}>
-                  <button
-                    className={styles.button}
-                    onClick={() => handleDelete(user.id)}
-                  >
-                    Delete
-                  </button>
+                  <Button onClick={() => handleDelete(user.id)}>Delete</Button>
                 </td>
               </tr>
             ))}
@@ -89,20 +93,12 @@ const UserTable = () => {
         </table>
       )}
       <div>
-        <button
-          className={styles.button}
-          onClick={() => setPage(page - 1)}
-          disabled={page === 0}
-        >
+        <Button onClick={handlePrevious} disabled={page === 0}>
           Previous
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => setPage(page + 1)}
-          disabled={!hasMoreUsers}
-        >
+        </Button>
+        <Button onClick={handleNext} disabled={!hasMoreUsers}>
           Next
-        </button>
+        </Button>
       </div>
     </div>
   );

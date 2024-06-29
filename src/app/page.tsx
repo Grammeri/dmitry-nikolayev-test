@@ -1,4 +1,4 @@
-import '../app/styles/global.scss';
+import '@/app/styles/global.scss';
 
 import Header from '@/app/components/Header/Header';
 import UserTable from '@/app/components/UserTable/UserTable';

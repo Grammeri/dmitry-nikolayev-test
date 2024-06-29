@@ -1,3 +1,5 @@
+@import '@/app/styles/helpers/colors.scss';
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -10,5 +12,5 @@
 }
 
 .th {
-  background-color: #f4f4f4;
+  background-color: $table-bg-color;
 }

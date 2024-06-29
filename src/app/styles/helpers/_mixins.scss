@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-// Mixin for media queries
+// Media queries
 @mixin respond-to($breakpoint) {
   @if $breakpoint == sm {
     @media (max-width: $breakpoint-sm) { @content; }
@@ -15,5 +15,23 @@
     @media (max-width: $breakpoint-lg) { @content; }
   } @else if $breakpoint == xl {
     @media (max-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Buttons
+@mixin button-regular {
+  padding: 0.5rem 1rem;
+  font-size: $font-size-regular;
+  border-radius: $border-radius;
+  background-color: $color-primary;
+  color: $color-text-light;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+  &:disabled {
+    background-color: $color-disabled;
+    cursor: not-allowed;
   }
 }
