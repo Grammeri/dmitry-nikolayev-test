@@ -25,7 +25,7 @@ export default function LoginForm() {
     setTimeout(() => {
       setLoading(false);
       // Redirect to home page
-      window.location.href = '/';
+      window.location.href = '/main';
     }, 2000);
   };
 

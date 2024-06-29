@@ -1,21 +1,8 @@
-import '@/app/styles/global.scss';
+// src/app/page.tsx
 
-import Header from '@/app/components/Header/Header';
-import UserTable from '@/app/components/UserTable/UserTable';
-import EventsTable from '@/app/components/EventsTable/EventsTable';
+import { redirect } from 'next/navigation';
 
-export default function Main() {
-  return (
-    <>
-      <Header />
-      <main className="container">
-        <div className="column">
-          <UserTable />
-        </div>
-        <div className="column">
-          <EventsTable />
-        </div>
-      </main>
-    </>
-  );
+export default function Home() {
+  redirect('/login');
+  return null;
 }
