@@ -1,0 +1,21 @@
+@import '@/app/styles/helpers/colors.scss';
+@import '@/app/styles/helpers/vars.scss';
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.th, .td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.th {
+  background-color: $table-bg-color;
+}
+
+.table-heading{
+  font-size: $font-size-regular
+}
