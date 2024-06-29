@@ -92,7 +92,7 @@ const UserTable = () => {
           </tbody>
         </table>
       )}
-      <div className="pagination-buttons">
+      <div style={{ marginBottom: '1.5rem' }} className="pagination-buttons">
         <Button onClick={handlePrevious} disabled={page === 0}>
           Previous
         </Button>
