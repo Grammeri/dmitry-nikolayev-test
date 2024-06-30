@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { formatDate } from '@/app/shared/utils/formatDate';
 import Button from '@/app/components/Button/Button';
 import styles from './UserTable.module.scss';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Pagination } from '@mui/material';
 
 type UserItem = {
   id: number;
@@ -17,8 +17,14 @@ const UserTable = () => {
   const [users, setUsers] = useState<UserItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
-  const [hasMoreUsers, setHasMoreUsers] = useState(true);
+  const [totalCount, setTotalCount] = useState(0);
+
   const limit = 5;
+  const totalPages = Math.ceil(totalCount / limit);
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    setPage(value - 1);
+  };
 
   useEffect(() => {
     fetchUsers(page);
@@ -35,16 +41,11 @@ const UserTable = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      console.log(data.items);
-      if (data.items.length < limit) {
-        setHasMoreUsers(false);
-      } else {
-        setHasMoreUsers(true);
-      }
+
+      setTotalCount(data.total);
       setUsers(data.items);
     } catch (error) {
       console.error('Fetching users failed:', error);
-      setHasMoreUsers(false);
     } finally {
       setLoading(false);
     }
@@ -52,14 +53,6 @@ const UserTable = () => {
 
   const handleDelete = (id: number) => {
     setUsers(users.filter((user) => user.id !== id));
-  };
-
-  const handlePrevious = () => {
-    setPage(page - 1);
-  };
-
-  const handleNext = () => {
-    setPage(page + 1);
   };
 
   return (
@@ -94,12 +87,12 @@ const UserTable = () => {
         </table>
       )}
       <div style={{ marginBottom: '1.5rem' }} className="pagination-buttons">
-        <Button onClick={handlePrevious} disabled={page === 0}>
-          Previous
-        </Button>
-        <Button onClick={handleNext} disabled={!hasMoreUsers}>
-          Next
-        </Button>
+        <Pagination
+          count={totalPages}
+          variant="outlined"
+          shape="rounded"
+          onChange={handleChange}
+        />
       </div>
     </div>
   );

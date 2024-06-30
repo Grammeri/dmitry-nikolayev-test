@@ -6,16 +6,13 @@ import EventsTable from '@/app/components/EventsTable/EventsTable';
 
 export default function Main() {
   return (
-    <>
-      <Header />
-      <main className="container">
-        <div className="column">
-          <UserTable />
-        </div>
-        <div className="column">
-          <EventsTable />
-        </div>
-      </main>
-    </>
+    <main className="container">
+      <div className="column">
+        <UserTable />
+      </div>
+      <div className="column">
+        <EventsTable />
+      </div>
+    </main>
   );
 }

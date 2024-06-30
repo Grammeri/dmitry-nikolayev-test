@@ -28,6 +28,9 @@
   color: $color-text-light;
   border: none;
   cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  width: 50%;
   &:hover {
     background-color: $color-primary-hover;
   }
@@ -36,6 +39,25 @@
     cursor: not-allowed;
   }
 }
+
+@mixin quickViewButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: $xxsm-border-radius;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+// Borders
+
 @mixin table-border {
   border: 0.0625rem solid $table-line-color;
 }

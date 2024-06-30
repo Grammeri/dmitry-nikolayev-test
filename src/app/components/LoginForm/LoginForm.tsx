@@ -22,13 +22,30 @@ export default function LoginForm() {
 
   const handleSubmit = async (
     values: LoginFormValues,
-    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }
+    {
+      setSubmitting,
+      validateForm,
+      setTouched,
+    }: {
+      setSubmitting: (isSubmitting: boolean) => void;
+      validateForm: () => Promise<any>;
+      setTouched: (fields: { [field: string]: boolean }) => void;
+    }
   ) => {
     setLoading(true);
-    setTimeout(() => {
+
+    const errors = await validateForm();
+    setTouched({
+      email: true,
+      password: true,
+    });
+
+    if (Object.keys(errors).length > 0) {
+      setSubmitting(false);
       setLoading(false);
-      router.push('/main');
-    }, 2000);
+      return;
+    }
+    router.push('/main');
   };
 
   return (
@@ -39,14 +56,36 @@ export default function LoginForm() {
         validationSchema={loginValidationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
-          <Form className="formField">
+        {({ isSubmitting, validateForm, setTouched }) => (
+          <Form
+            className={styles.formField}
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const errors = await validateForm();
+              setTouched({
+                email: true,
+                password: true,
+              });
+
+              if (Object.keys(errors).length > 0) {
+                return;
+              }
+
+              handleSubmit(initialValues, {
+                setSubmitting: () => {},
+                validateForm,
+                setTouched,
+              });
+            }}
+          >
+            {/* Инпут для email */}
             <Field
               type="email"
               name="email"
               placeholder="Email"
               disabled={loading}
               className={styles.input}
+              autoComplete="username"
             />
             <ErrorMessage
               name="email"
@@ -54,12 +93,14 @@ export default function LoginForm() {
               className={styles['error-message']}
             />
 
+            {/* Инпут для password */}
             <Field
               type="password"
               name="password"
               placeholder="Password"
               disabled={loading}
               className={styles.input}
+              autoComplete="current-password"
             />
             <ErrorMessage
               name="password"
@@ -67,7 +108,12 @@ export default function LoginForm() {
               className={styles['error-message']}
             />
 
-            <Button type="submit" disabled={isSubmitting || loading}>
+            {/* Кнопка Submit */}
+            <Button
+              type="submit"
+              disabled={isSubmitting || loading}
+              className={styles.submitButton}
+            >
               {loading ? (
                 <CircularProgress size={24} color="inherit" />
               ) : (
