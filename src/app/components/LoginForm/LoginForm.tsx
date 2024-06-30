@@ -78,7 +78,6 @@ export default function LoginForm() {
               });
             }}
           >
-            {/* Инпут для email */}
             <Field
               type="email"
               name="email"
@@ -93,7 +92,6 @@ export default function LoginForm() {
               className={styles['error-message']}
             />
 
-            {/* Инпут для password */}
             <Field
               type="password"
               name="password"
@@ -107,8 +105,6 @@ export default function LoginForm() {
               component="div"
               className={styles['error-message']}
             />
-
-            {/* Кнопка Submit */}
             <Button
               type="submit"
               disabled={isSubmitting || loading}

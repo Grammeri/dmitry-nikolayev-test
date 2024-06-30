@@ -14,7 +14,7 @@ const ClientHeader = () => {
           {pathname !== '/login' ? (
             <>
               <li className={styles.li}>
-                <Link href="/" className={styles.a}>
+                <Link href="/main" className={styles.a}>
                   Home
                 </Link>
               </li>
