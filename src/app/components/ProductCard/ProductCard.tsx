@@ -1,21 +1,9 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
 import { FaHeart, FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import { ProductCardProps } from '@/app/interfaces/products';
 
-interface ProductCardProps {
-  product: {
-    id: number;
-    photo: string;
-    initialPrice: number;
-    discountedPrice: number;
-    description: string;
-    rating: number;
-    votes: number;
-    installment: string;
-  };
-}
-
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({ product }: ProductCardProps): React.ReactNode => {
   return (
     <div className={styles.productCard}>
       <img

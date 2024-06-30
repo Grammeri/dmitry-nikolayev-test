@@ -1,12 +1,12 @@
+import React from 'react';
 import styles from './Button.module.scss';
+import { ButtonProps } from '@mui/base';
 
-type ButtonProps = {
-  children: React.ReactNode;
-  onClick: () => void;
-  disabled?: boolean;
-};
-
-const Button = ({ children, onClick, disabled = false }: ButtonProps) => {
+const Button = ({
+  children,
+  onClick,
+  disabled = false,
+}: ButtonProps): React.ReactNode => {
   return (
     <button className={styles.button} onClick={onClick} disabled={disabled}>
       {children}
