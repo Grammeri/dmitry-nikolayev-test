@@ -1,0 +1,96 @@
+.productCard {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  max-width: 18.75rem;
+  margin: 1rem; // 16px
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.productPhoto {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.discountedPrice {
+  color: red;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.initialPrice {
+  text-decoration: line-through;
+  color: #aaa;
+}
+
+.description {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.votes {
+  margin-left: 0.5rem;
+  color: #666;
+}
+
+.installment {
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.addToCart {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+.heartIcon {
+  background-color: transparent;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #ff4d4d;
+  }
+}
