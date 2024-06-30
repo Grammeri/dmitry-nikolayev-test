@@ -1,15 +1,16 @@
 @import '@/app/styles/helpers/colors.scss';
 @import '@/app/styles/helpers/vars.scss';
+@import '@/app/styles/helpers/mixins.scss';
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1rem;
+  margin-bottom: 0.0625rem;
 }
 
 .th, .td {
-  border: 1px solid #ddd;
-  padding: 0.312rem;
+  @include table-border;
+  padding: $padding-xsm;
 }
 
 .th {

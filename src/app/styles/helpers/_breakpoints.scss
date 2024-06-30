@@ -1,13 +1,13 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem;
 
   @include respond-to(sm) {
-    padding: 10px;
+    padding: 0.625rem;
   }
 
   @include respond-to(md) {
-    padding: 15px;
+    padding: 0.937rem;
   }
 }

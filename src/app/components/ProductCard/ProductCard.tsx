@@ -2,14 +2,17 @@ import React from 'react';
 import styles from './ProductCard.module.scss';
 import { FaHeart, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { ProductCardProps } from '@/app/interfaces/products';
+import Image from 'next/image';
 
 const ProductCard = ({ product }: ProductCardProps): React.ReactNode => {
   return (
     <div className={styles.productCard}>
-      <img
+      <Image
         src={product.photo}
         alt={product.description}
         className={styles.productPhoto}
+        width={500}
+        height={500}
       />
       <div className={styles.priceContainer}>
         <span className={styles.discountedPrice}>

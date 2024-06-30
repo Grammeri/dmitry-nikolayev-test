@@ -1,5 +1,6 @@
 @import '@/app/styles/helpers/vars.scss';
 @import '@/app/styles/helpers/colors.scss';
+@import '@/app/styles/helpers/mixins.scss';
 
 .loginContainer {
   display: flex;
@@ -26,8 +27,8 @@
 }
 .input {
   padding: 0.75rem;
-  margin-bottom: 1rem;
-  border: 0.062rem solid #ccc;
+  margin-bottom: 0.625rem;
+  @include login-form-border;
   border-radius: $small-border-radius;
   font-size: $font-size-regular;
   width: 100%;

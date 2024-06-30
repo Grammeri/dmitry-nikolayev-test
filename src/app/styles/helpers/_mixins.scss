@@ -1,9 +1,10 @@
+@import 'vars';
 // Mixin for flex center
-/*@mixin flex-center {
+@mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
-}*/
+}
 
 // Media queries
 @mixin respond-to($breakpoint) {
@@ -34,4 +35,10 @@
     background-color: $color-disabled;
     cursor: not-allowed;
   }
+}
+@mixin table-border {
+  border: 0.0625rem solid $table-line-color;
+}
+@mixin login-form-border {
+  border: 0.062rem solid $login-form-line-color;
 }

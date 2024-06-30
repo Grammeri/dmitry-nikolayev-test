@@ -1,5 +1,6 @@
 @import '@/app/styles/helpers/colors.scss';
 @import '@/app/styles/helpers/vars.scss';
+@import '@/app/styles/helpers/mixins.scss';
 
 .table {
   width: 100%;
@@ -8,8 +9,8 @@
 }
 
 .th, .td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  @include table-border;
+  padding: $padding-sm;
 }
 
 .th {
