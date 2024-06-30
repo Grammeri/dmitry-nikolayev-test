@@ -5,7 +5,6 @@ import { ProductCardProps } from '@/app/interfaces/products';
 import Image from 'next/image';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
-import { Typography } from '@mui/material';
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
