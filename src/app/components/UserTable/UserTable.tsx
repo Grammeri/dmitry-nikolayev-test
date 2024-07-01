@@ -79,7 +79,12 @@ const UserTable = () => {
                 <td className={styles.td}>{user.role}</td>
                 <td className={styles.td}>{formatDate(user.ctime)}</td>
                 <td className={styles.td}>
-                  <Button onClick={() => handleDelete(user.id)}>Delete</Button>
+                  <div
+                    className={styles.delete}
+                    onClick={() => handleDelete(user.id)}
+                  >
+                    Delete
+                  </div>
                 </td>
               </tr>
             ))}

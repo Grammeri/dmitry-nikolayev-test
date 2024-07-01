@@ -20,4 +20,11 @@
 .table-heading{
   font-size: $font-size-regular
 }
-
+.delete {
+  cursor: pointer;
+  text-decoration: underline;
+  color: red;
+  &:hover {
+    color: darken(red, 10%);
+  }
+}
