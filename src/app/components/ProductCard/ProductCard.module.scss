@@ -2,23 +2,7 @@
 @import '@/app/styles/helpers/mixins';
 
 .productCard {
-  border-radius: $xxsm-border-radius;
-  padding: $padding-md;
-  text-align: center;
-  max-width: 18.75rem;
-  margin: 1rem;
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-  position: relative;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-
-  &:hover .quickViewButton {
-    opacity: 1;
-    visibility: visible;
-  }
+  @include product-card;
 }
 
 .imageContainer {

@@ -3,19 +3,11 @@
 @import '@/app/styles/helpers/mixins.scss';
 
 .loginContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 1rem 3rem;
-  background-color: $login-form-bg-color;
-  border-radius: $medium-border-radius;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: 10rem auto;
+  @include login-container
 }
 
 .loginTitle {
-  margin-bottom: 1.5rem;
+  margin-bottom: $margin-bottom-sm;
   font-size: $font-size-title;
   color: $font-color;
 }
@@ -27,13 +19,7 @@
 }
 
 .input {
-  padding: 0.75rem;
-  margin-bottom: 1rem;
-  @include login-form-border;
-  border-radius: $small-border-radius;
-  font-size: $font-size-regular;
-  box-sizing: border-box;
-  width: 100%;
+  @include input-styles;
 }
 
 .input:disabled {
@@ -43,11 +29,11 @@
 .error-message {
   color: $warning-color;
   font-size: $font-size-small;
-  margin-top: -0.75rem;
-  margin-bottom: 1rem;
+  margin-top: $margin-top-login-notification-negative;
+  margin-bottom: $margin-top-sm;
 }
 
 .submitButton {
-  margin-top: 1rem;
+  margin-top: $margin-top-sm;
   width: 100%;
 }

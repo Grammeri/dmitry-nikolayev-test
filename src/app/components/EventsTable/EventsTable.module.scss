@@ -10,7 +10,7 @@
 
 .th, .td {
   @include table-border;
-  padding: $padding-sm;
+  padding: $padding-xsm;
 }
 
 .th {

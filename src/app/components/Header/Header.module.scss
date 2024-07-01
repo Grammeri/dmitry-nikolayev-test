@@ -1,7 +1,11 @@
+@import '@/app/styles/helpers/colors.scss';
+@import '@/app/styles/helpers/vars.scss';
+@import '@/app/styles/helpers/mixins.scss';
+
 .header {
-  background-color: #0070f3;
-  color: white;
-  padding: 0.75rem;
+  background-color: $header-bg-color;
+  color: $header-login-title-color;
+  padding: $padding-sm;
 }
 
 .nav {
@@ -17,7 +21,7 @@
 }
 
 .li {
-  margin-right: 10px;
+  margin-right: 0.625rem;
 }
 
 .a {

@@ -32,10 +32,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <p className={styles.description}>{product.description}</p>
       <div className={styles.rating}>
         <Rating
-          name="product-rating"
+          name={`rating-${product.id}`}
           value={product.rating}
           precision={0.5}
-          Controlled
+          readOnly
           emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
         <span className={styles.votes}>({product.votes} votes)</span>

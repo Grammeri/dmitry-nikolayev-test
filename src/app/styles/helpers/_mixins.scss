@@ -55,9 +55,53 @@
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 }
+@mixin login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 3rem; /* Уточнённое свойство padding */
+  background-color: $login-form-bg-color;
+  border-radius: $medium-border-radius;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  max-width: 25rem; /* Максимальная ширина в ремах */
+  margin: 10rem auto;
+}
+
+@mixin input-styles {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  @include login-form-border;
+  border-radius: $small-border-radius;
+  font-size: $font-size-regular;
+  box-sizing: border-box;
+  width: 100%;
+}
+@mixin product-card {
+  border-radius: $xxsm-border-radius;
+  padding: $padding-md;
+  text-align: center;
+  max-width: 18.75rem;
+  margin: 1rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:hover .quickViewButton {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.productCard {
+  @include product-card;
+}
 
 // Borders
-
 @mixin table-border {
   border: 0.0625rem solid $table-line-color;
 }
