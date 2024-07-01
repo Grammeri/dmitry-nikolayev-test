@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className={styles.productCard}>
-      <div>
+      <div className={styles.imageContainer}>
         <Image
           src={product.photo}
           alt={product.description}
@@ -27,8 +27,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           width={500}
           height={500}
         />
-        <span>-14%</span>
-        <button>Quick View</button>
+        <span className={styles.discountLabel}>-14%</span>
+        <button className={styles.quickViewButton}>Quick View</button>
       </div>
       <div className={styles.priceContainer}>
         <span className={styles.discountedPrice}>
