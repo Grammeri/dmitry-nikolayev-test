@@ -1,4 +1,20 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Тестовое задание Дмитрия Николаева на Next.js
+- Срок выполнения 2 дня
+
+## Стек технологий
+- Next.js
+- React
+- Yarn
+- SCSS
+- ESLint
+- Prettier
+- TypeScript
+
+## Особенности
+- Приложение адаптировано для экранов с шириной до 380 пикселей.
+- Предусмотрена пользовательская страница Not Found.
+
 
 ## Getting Started
 
