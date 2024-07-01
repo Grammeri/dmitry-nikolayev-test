@@ -1,16 +1,25 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import styles from './ProductCard.module.scss';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { ProductCardProps } from '@/app/interfaces/products';
 import Image from 'next/image';
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const [hoveredRating, setHoveredRating] = useState(0);
+
+  const handleMouseEnter = (index: number) => {
+    setHoveredRating(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredRating(0);
+  };
+
   return (
     <div className={styles.productCard}>
-      <div className={styles.imageContainer}>
-        {' '}
+      <div>
         <Image
           src={product.photo}
           alt={product.description}
@@ -18,8 +27,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           width={500}
           height={500}
         />
-        <span className={styles.discountLabel}>-14%</span>{' '}
-        <button className={styles.quickViewButton}>Quick View</button>{' '}
+        <span>-14%</span>
+        <button>Quick View</button>
       </div>
       <div className={styles.priceContainer}>
         <span className={styles.discountedPrice}>
@@ -31,13 +40,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </div>
       <p className={styles.description}>{product.description}</p>
       <div className={styles.rating}>
-        <Rating
-          name={`rating-${product.id}`}
-          value={product.rating}
-          precision={0.5}
-          readOnly
-          emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
-        />
+        {[...Array(5)].map((_, index) => (
+          <span
+            key={index}
+            onMouseEnter={() => handleMouseEnter(index + 1)}
+            onMouseLeave={handleMouseLeave}
+            className={styles.star}
+          >
+            {hoveredRating >= index + 1 || product.rating >= index + 1 ? (
+              <FaStar color="#FFD700" />
+            ) : product.rating >= index + 0.5 ? (
+              <FaStarHalfAlt color="#FFD700" />
+            ) : (
+              <FaStar color="#e4e5e9" />
+            )}
+          </span>
+        ))}
         <span className={styles.votes}>({product.votes} votes)</span>
       </div>
       <div className={styles.installment}>
