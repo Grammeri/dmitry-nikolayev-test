@@ -6,7 +6,7 @@ import { FaHeart, FaStar, FaStarHalfAlt } from 'react-icons/fa';
 import { ProductCardProps } from '@/app/interfaces/products';
 import Image from 'next/image';
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard = ({ product }: ProductCardProps): React.ReactNode => {
   const [hoveredRating, setHoveredRating] = useState(0);
 
   const handleMouseEnter = (index: number) => {

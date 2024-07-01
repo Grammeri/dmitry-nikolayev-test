@@ -1,7 +1,9 @@
+@import '@/app/styles/helpers/vars.scss';
+
 .productList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem;
+  padding: $padding-md;
   gap: 1rem;
 }

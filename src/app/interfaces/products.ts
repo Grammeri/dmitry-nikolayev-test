@@ -18,3 +18,18 @@ export interface ButtonProps {
   onClick: () => void;
   disabled?: boolean;
 }
+export type EventItem = {
+  ctime: number;
+  event: string;
+};
+export interface LoginFormValues {
+  email: string;
+  password: string;
+}
+
+export type UserItem = {
+  id: number;
+  name: string;
+  role: string;
+  ctime: number;
+};

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Header from '@/app/components/Header/Header'; // Временно используем серверный хедер
+import Header from '@/app/components/Header/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header /> {/* Временно используем серверный хедер */}
+        <Header />
         {children}
       </body>
     </html>

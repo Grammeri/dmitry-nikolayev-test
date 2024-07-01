@@ -3,11 +3,7 @@
 import { useEffect, useState } from 'react';
 import { formatDate } from '@/app/shared/utils/formatDate';
 import styles from './EventsTable.module.scss';
-
-type EventItem = {
-  ctime: number;
-  event: string;
-};
+import { EventItem } from '@/app/interfaces/products';
 
 const EventsTable = () => {
   const [events, setEvents] = useState<EventItem[]>([]);

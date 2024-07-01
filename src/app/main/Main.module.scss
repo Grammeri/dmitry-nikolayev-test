@@ -1,8 +1,10 @@
+@import '@/app/styles/helpers/vars.scss';
+
 .container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  padding: 1rem;
+  padding: $padding-md;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -10,6 +12,6 @@
 }
 
 .column {
-  padding: 1rem;
+  padding: $padding-md;
   width: 100%;
 }

@@ -8,11 +8,7 @@ import { useRouter } from 'next/navigation';
 import styles from './LoginForm.module.scss';
 import Button from '@/app/components/Button/Button';
 import { CircularProgress } from '@mui/material';
-
-interface LoginFormValues {
-  email: string;
-  password: string;
-}
+import { LoginFormValues } from '@/app/interfaces/products';
 
 export default function LoginForm() {
   const [loading, setLoading] = useState(false);

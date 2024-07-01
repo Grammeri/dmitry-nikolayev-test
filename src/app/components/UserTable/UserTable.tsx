@@ -2,16 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { formatDate } from '@/app/shared/utils/formatDate';
-import Button from '@/app/components/Button/Button';
 import styles from './UserTable.module.scss';
 import { CircularProgress, Pagination } from '@mui/material';
-
-type UserItem = {
-  id: number;
-  name: string;
-  role: string;
-  ctime: number;
-};
+import { UserItem } from '@/app/interfaces/products';
 
 const UserTable = () => {
   const [users, setUsers] = useState<UserItem[]>([]);
@@ -45,7 +38,6 @@ const UserTable = () => {
       setTotalCount(data.total);
       setUsers(data.items);
     } catch (error) {
-      console.error('Fetching users failed:', error);
     } finally {
       setLoading(false);
     }
