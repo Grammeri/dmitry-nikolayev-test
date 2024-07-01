@@ -8,7 +8,8 @@
   margin-bottom: $margin-bottom-sm;
 }
 
-.th, .td {
+.th,
+.td {
   @include table-border;
   padding: $padding-xxsm;
 }
@@ -17,8 +18,8 @@
   background-color: $table-bg-color;
 }
 
-.table-heading{
-  font-size: $font-size-regular
+.table-heading {
+  font-size: $font-size-regular;
 }
 .delete {
   cursor: pointer;

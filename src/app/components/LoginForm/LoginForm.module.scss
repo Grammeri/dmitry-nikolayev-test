@@ -3,7 +3,7 @@
 @import '@/app/styles/helpers/mixins.scss';
 
 .loginContainer {
-  @include login-container
+  @include login-container;
 }
 
 .loginTitle {

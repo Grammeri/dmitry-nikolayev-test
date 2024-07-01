@@ -9,13 +9,21 @@
 // Media queries
 @mixin respond-to($breakpoint) {
   @if $breakpoint == sm {
-    @media (max-width: $breakpoint-sm) { @content; }
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
   } @else if $breakpoint == md {
-    @media (max-width: $breakpoint-md) { @content; }
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
   } @else if $breakpoint == lg {
-    @media (max-width: $breakpoint-lg) { @content; }
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
   } @else if $breakpoint == xl {
-    @media (max-width: $breakpoint-xl) { @content; }
+    @media (max-width: $breakpoint-xl) {
+      @content;
+    }
   }
 }
 
@@ -53,7 +61,9 @@
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  transition:
+    opacity 0.2s ease-in-out,
+    visibility 0.2s ease-in-out;
 }
 @mixin login-container {
   display: flex;
@@ -110,7 +120,6 @@
     transform: scale(1.05);
   }
 }
-
 
 // Borders
 @mixin table-border {

@@ -8,7 +8,8 @@
   margin-bottom: 1rem;
 }
 
-.th, .td {
+.th,
+.td {
   @include table-border;
   padding: $padding-xsm;
 }
@@ -16,6 +17,6 @@
 .th {
   background-color: $table-bg-color;
 }
-.h2{
+.h2 {
   font-size: $font-size-regular;
 }
