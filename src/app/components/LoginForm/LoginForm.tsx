@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useState } from 'react';
+import { ErrorMessage, Field, Form, Formik, FormikHelpers } from 'formik';
 import { loginValidationSchema } from '@/app/shared/utils/validationSchema';
 import { useRouter } from 'next/navigation';
 
@@ -18,19 +18,10 @@ export default function LoginForm() {
 
   const handleSubmit = async (
     values: LoginFormValues,
-    {
-      setSubmitting,
-      validateForm,
-      setTouched,
-    }: {
-      setSubmitting: (isSubmitting: boolean) => void;
-      validateForm: () => Promise<any>;
-      setTouched: (fields: { [field: string]: boolean }) => void;
-    }
+    { setSubmitting, validateForm, setTouched }: FormikHelpers<LoginFormValues>
   ) => {
     setLoading(true);
 
-    // Trim the values before validation
     values.email = values.email.trim();
     values.password = values.password.trim();
 
@@ -45,12 +36,13 @@ export default function LoginForm() {
       setLoading(false);
       return;
     }
+    setSubmitting(true);
     router.push('/main');
   };
 
   const handleEmailChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    handleChange: any
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   ) => {
     e.target.value = e.target.value.trim();
     handleChange(e);
@@ -58,7 +50,6 @@ export default function LoginForm() {
 
   const handleEmailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     e.target.value = e.target.value.trim();
-    e.target.setSelectionRange(e.target.value.length, e.target.value.length);
   };
 
   return (
@@ -69,33 +60,8 @@ export default function LoginForm() {
         validationSchema={loginValidationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting, validateForm, setTouched, values, handleChange }) => (
-          <Form
-            className={styles.formField}
-            onSubmit={async (e) => {
-              e.preventDefault();
-
-              // Trim the values before validation
-              values.email = values.email.trim();
-              values.password = values.password.trim();
-
-              const errors = await validateForm();
-              setTouched({
-                email: true,
-                password: true,
-              });
-
-              if (Object.keys(errors).length > 0) {
-                return;
-              }
-
-              handleSubmit(values as LoginFormValues, {
-                setSubmitting: () => {},
-                validateForm,
-                setTouched,
-              });
-            }}
-          >
+        {({ isSubmitting, handleChange, handleSubmit }) => (
+          <Form className={styles.formField} onSubmit={handleSubmit}>
             <Field
               type="email"
               name="email"

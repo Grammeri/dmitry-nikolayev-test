@@ -4,6 +4,10 @@ export const loginValidationSchema = Yup.object({
   email: Yup.string()
     .matches(
       /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/,
+      'Invalid email address'
+    )
+    .matches(
+      /^[A-Za-z0-9._%+-@]+$/,
       'Email must contain only Latin letters and digits'
     )
     .required('Email is required'),
