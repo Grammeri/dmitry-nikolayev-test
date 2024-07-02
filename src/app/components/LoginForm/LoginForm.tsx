@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { loginValidationSchema } from '@/app/shared/utils/validationSchema';
 import { useRouter } from 'next/navigation';
@@ -48,6 +48,19 @@ export default function LoginForm() {
     router.push('/main');
   };
 
+  const handleEmailChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    handleChange: any
+  ) => {
+    e.target.value = e.target.value.trim();
+    handleChange(e);
+  };
+
+  const handleEmailBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    e.target.value = e.target.value.trim();
+    e.target.setSelectionRange(e.target.value.length, e.target.value.length);
+  };
+
   return (
     <div className={styles.loginContainer}>
       <h1 className={styles.loginTitle}>Login</h1>
@@ -90,15 +103,10 @@ export default function LoginForm() {
               disabled={loading}
               className={styles.input}
               autoComplete="username"
-              onChange={(e) => {
-                const trimmedValue = e.target.value.trim();
-                handleChange({
-                  target: {
-                    name: e.target.name,
-                    value: trimmedValue,
-                  },
-                });
-              }}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                handleEmailChange(e, handleChange)
+              }
+              onBlur={handleEmailBlur}
             />
             <ErrorMessage
               name="email"
@@ -113,14 +121,9 @@ export default function LoginForm() {
               disabled={loading}
               className={styles.input}
               autoComplete="current-password"
-              onChange={(e) => {
-                const trimmedValue = e.target.value.trim();
-                handleChange({
-                  target: {
-                    name: e.target.name,
-                    value: trimmedValue,
-                  },
-                });
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                e.target.value = e.target.value.trim();
+                handleChange(e);
               }}
             />
             <ErrorMessage
