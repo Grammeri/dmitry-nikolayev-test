@@ -55,7 +55,7 @@ export default function LoginForm() {
   return (
     <div className={styles.loginContainer}>
       <h1 className={styles.loginTitle}>Login</h1>
-      <Formik
+      <Formik<LoginFormValues>
         initialValues={initialValues}
         validationSchema={loginValidationSchema}
         onSubmit={handleSubmit}
