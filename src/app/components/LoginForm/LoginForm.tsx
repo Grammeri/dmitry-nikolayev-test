@@ -30,6 +30,10 @@ export default function LoginForm() {
   ) => {
     setLoading(true);
 
+    // Trim the values before validation
+    values.email = values.email.trim();
+    values.password = values.password.trim();
+
     const errors = await validateForm();
     setTouched({
       email: true,
@@ -52,11 +56,16 @@ export default function LoginForm() {
         validationSchema={loginValidationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting, validateForm, setTouched }) => (
+        {({ isSubmitting, validateForm, setTouched, values, handleChange }) => (
           <Form
             className={styles.formField}
             onSubmit={async (e) => {
               e.preventDefault();
+
+              // Trim the values before validation
+              values.email = values.email.trim();
+              values.password = values.password.trim();
+
               const errors = await validateForm();
               setTouched({
                 email: true,
@@ -67,7 +76,7 @@ export default function LoginForm() {
                 return;
               }
 
-              handleSubmit(initialValues, {
+              handleSubmit(values as LoginFormValues, {
                 setSubmitting: () => {},
                 validateForm,
                 setTouched,
@@ -81,6 +90,15 @@ export default function LoginForm() {
               disabled={loading}
               className={styles.input}
               autoComplete="username"
+              onChange={(e) => {
+                const trimmedValue = e.target.value.trim();
+                handleChange({
+                  target: {
+                    name: e.target.name,
+                    value: trimmedValue,
+                  },
+                });
+              }}
             />
             <ErrorMessage
               name="email"
@@ -95,6 +113,15 @@ export default function LoginForm() {
               disabled={loading}
               className={styles.input}
               autoComplete="current-password"
+              onChange={(e) => {
+                const trimmedValue = e.target.value.trim();
+                handleChange({
+                  target: {
+                    name: e.target.name,
+                    value: trimmedValue,
+                  },
+                });
+              }}
             />
             <ErrorMessage
               name="password"
